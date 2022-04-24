@@ -1,0 +1,140 @@
+# 多分类——173类 （8650：50：50）
+	建议每个高度：训练集1K = 10*121（张）（训练集数据增强）
+	12000--8700 可能有一些类中微球没有高度区别，未离开光阱
+回归——将代码改为回归问题 改dataloader
+模型减小
+目标检测算法 
+
+训练数据分类结果：
+	1. 没有训练集数据增广Train = 6*173;无transform数据增广;
+	batch = 8; 层：256,128,240
+	
+	Best valid accuracy: epoch 78 
+	train accuracy：53.5645% 
+	valid accuracy：15.3179% 
+	2. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=15),
+	transforms.RandomHorizontalFlip()；
+	batch = 16; 层：256,240
+	
+	Best valid Accuracy：epoch 104
+	Train Accuracy: 52.1195%, 
+	Valid Accuracy: 39.5954%,
+	3. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=15),
+	transforms.RandomHorizontalFlip()；
+	batch = 16; 层：256,128,64,240
+	
+	Best valid Accuracy：epoch 528
+	Train Accuracy: 25.7225%
+	Valid Accuracy: 48.5549%
+	4. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=15),
+	transforms.RandomHorizontalFlip()；
+	batch = 32; 层：256,128,64,240
+	
+	Best valid Accuracy：epoch 546
+	Train Accuracy: 29.86%
+	Valid Accuracy: 45.08%
+	5. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=15),
+	transforms.RandomHorizontalFlip()；
+	batch = 32; 层：256,128,64,32,16,240
+	
+	Best valid Accuracy：epoch 325
+	Train Accuracy: 2.1%
+	Valid Accuracy: 3.4%
+	6. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=15),
+	transforms.RandomHorizontalFlip()；
+	batch = 32; 层：256,128,64,32,173
+	
+	Best valid Accuracy：epoch  2335
+	Train Accuracy: 20.13%
+	Valid Accuracy: 41.9%
+	7. 数据集增广 train = 8*121*173
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 32; 层：256,128,64,173
+	
+	Best valid Accuracy：epoch 15
+	Train Accuracy: 57.85%
+	Valid Accuracy: 61.27%
+	8. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 32; 层：256,128,64,32,173
+	
+	Best valid Accuracy：epoch 967
+	Train Accuracy: 28.6%
+	Valid Accuracy: 45.08%
+	9. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 16; 层：256,173
+	LEARNING RATE =1e-4
+	
+	Best valid Accuracy：epoch 967
+	Train Accuracy: 36.12%
+	Valid Accuracy: 41.04%
+	10. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 16; 层：256,173
+	LEARNING RATE =1e-3
+	
+	Best valid Accuracy：epoch 
+	Train Accuracy: 0.578%？
+	Valid Accuracy: 0.578%
+	11. 没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 16; 层：256,173
+	LEARNING RATE =3e-4
+	
+	Best valid Accuracy：epoch 123
+	Train Accuracy: 10.79%
+	Valid Accuracy: 25.72%
+	12. 数据集增广 train = 8*121*173
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 32; 层：256,128,64,173
+	LEARNING RATE =1e-4
+	Resnet101
+	
+	Best valid Accuracy：epoch 
+	Train Accuracy: %
+	Valid Accuracy: %
+	13. resnet101 小样本数据
+	没有训练集数据增广Train = 6*173;
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 16; 层：256,173
+	learning r = 1e-4
+	
+	Best valid Accuracy：epoch 135
+	Train Accuracy: 38%
+	Valid Accuracy: 39.31%
+	14. 默认学习率
+	15. 数据集增广 train = 8*121*173
+	transforms.RandomResizedCrop(size=256, scale=(0.8, 1.0)),
+	transforms.RandomRotation(degrees=45),
+	transforms.RandomHorizontalFlip()；
+	batch = 16;层：256,128,64,173；drop out = 0.4；learning rate = 1e-4
+	
+	Best valid Accuracy：epoch 29
+	Train Accuracy: 61.06%
+	Valid Accuracy: 60.78%
+	
